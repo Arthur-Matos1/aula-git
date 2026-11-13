@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mural da Turma — Git & GitHub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Mural da Turma</h1>
+    <p>Aula prática de Git &amp; GitHub — ADS UniFG</p>
+  </header>
+
+  <main>
+    <section class="sobre">
+      <h2>O que é este projeto?</h2>
+      <p>Um mural feito pela turma. Cada aluno cria o seu cartão na pasta <code>alunos/</code>
+        e envia com <code>git add</code>, <code>git commit</code> e <code>git push</code>.</p>
+    </section>
+
+    <section>
+      <h2>Cartões da turma</h2>
+      <!-- Os cartões aparecem aqui sozinhos, lidos da pasta alunos/ no GitHub -->
+      <div id="mural" class="mural">
+        <p class="vazio">Ainda não tem ninguém aqui. Seja o primeiro!</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Feito com Git, GitHub e muito café.</p>
+  </footer>
+
+  <script src="mural.js"></script>
+</body>
+</html>

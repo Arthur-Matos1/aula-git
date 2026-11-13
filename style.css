@@ -1,0 +1,61 @@
+/* Tema claro (branch main) */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f4f6fb;
+  color: #1f2430;
+}
+
+header {
+  background-color: #5b4bdb;
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 40px;
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+code {
+  background-color: #e6e3ff;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.mural {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.cartao {
+  background-color: white;
+  border-radius: 12px;
+  padding: 16px;
+  border-top: 6px solid #5b4bdb;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: inherit;
+}
+
+.vazio {
+  color: #777;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #777;
+}

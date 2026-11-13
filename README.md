@@ -1,56 +1,72 @@
-# Aula prática — Git & GitHub
+# Mural da Turma — Aula de Git & GitHub
 
-Aula de Gestão de Configuração de Software (Garantia da Qualidade de Software — UniFG).
-O cenário é o estudo de caso **Sistema Comercial Integrado** da atividade.
+Projeto da aula prática de Git & GitHub (ADS — UniFG). Cada aluno cria seu cartão na pasta `alunos/` e envia para o GitHub.
 
-## Para a turma: códigos para copiar
+## 1. Instalar
 
-### `descontos.js` (bloco 3 — conflito em duplas)
+- **Git:** https://git-scm.com/downloads (no Windows, vem junto o **Git Bash**)
+- **VS Code:** https://code.visualstudio.com
 
-```js
-function calcularDesconto(valor, cliente) {
-  if (valor > 100) {
-    return valor * 0.05;
-  }
-  return 0;
-}
-module.exports = { calcularDesconto };
-```
-
-### `estoque.js` (bloco 5 — quem quebrou o estoque?)
-
-```js
-let estoque = { camisa: 10, calca: 5 };
-function entrada(produto, qtd) { estoque[produto] += qtd; }
-function saida(produto, qtd) { estoque[produto] -= qtd; }
-module.exports = { entrada, saida, estoque };
-```
-
-## Para a demonstração (Codespace)
-
-Code → Codespaces → Create codespace on main. No terminal:
+Configure seu nome e e-mail (o mesmo da conta do GitHub):
 
 ```bash
-cd /tmp
-bash /workspaces/aula-git/prepara-demo.sh
-cd aula-git && ls     # servidor.git  ana  bruno
+git config --global user.name "Seu Nome"
+git config --global user.email "seu@email.com"
 ```
 
-## Cola de comandos
+## 2. Criar a chave SSH
 
 ```bash
-git init                      # cria repositório
-git clone <url>               # copia repositório + histórico
-git status                    # o que mudou
-git diff                      # diferenças linha a linha
-git add <arquivo>             # prepara para o commit (staging)
-git commit -m "mensagem"      # registra localmente
-git push                      # envia ao remoto
-git pull                      # traz do remoto e faz merge
-git switch -c feature/nome    # cria e entra numa branch
-git merge feature/nome        # junta na branch atual
-git log --oneline --graph --all
-git blame arquivo             # quem mudou cada linha
-git revert <hash>             # desfaz criando um commit novo
-git tag -a v1.0 -m "baseline"
+ssh-keygen -t ed25519 -C "seu@email.com"   # aperte Enter 3 vezes
+cat ~/.ssh/id_ed25519.pub                   # copie o texto que aparecer
 ```
+
+No GitHub: **Settings → SSH and GPG keys → New SSH key** → cole → Add SSH key.
+
+Teste: `ssh -T git@github.com` → digite `yes` → deve aparecer `Hi seu-usuario!`
+
+> PC da faculdade? No fim da aula, apague a chave em Settings → SSH and GPG keys.
+
+## 3. Clonar e abrir
+
+```bash
+git clone git@github.com:Neto-User/aula-git.git
+cd aula-git
+code .
+```
+
+## 4. Comandos da aula
+
+| Comando | Para que serve |
+| --- | --- |
+| `git status` | Mostra o que mudou |
+| `git add .` | Prepara as mudanças (staging) |
+| `git commit -m "mensagem"` | Salva um ponto na história |
+| `git push` | Envia para o GitHub |
+| `git fetch` | Baixa as novidades sem mexer nos seus arquivos |
+| `git pull` | Baixa e junta as novidades |
+| `git switch nome-da-branch` | Troca de branch |
+| `git checkout nome-da-branch` | Jeito antigo de trocar de branch |
+| `git log --oneline` | Mostra a história |
+
+Experimente: `git switch tema-escuro`, abra o `index.html` e depois `git switch main`.
+
+## 5. Conventional Commits
+
+Formato: `tipo: descrição curta`
+
+| Tipo | Quando usar | Exemplo |
+| --- | --- | --- |
+| `feat` | Algo novo | `feat: adiciona cartão da Maria` |
+| `fix` | Correção | `fix: corrige link do rodapé` |
+| `docs` | Documentação | `docs: explica como clonar no README` |
+| `style` | Visual/formatação | `style: muda cor do cabeçalho` |
+| `chore` | Manutenção | `chore: adiciona .gitignore` |
+
+## 6. Desafio final
+
+1. Faça um **fork** deste repositório (botão Fork, no topo).
+2. Clone o **seu** fork: `git clone git@github.com:SEU-USUARIO/aula-git.git aula-git-fork`
+3. Copie `alunos/_modelo.html` para `alunos/seu-nome.html` e edite.
+4. `git add .` → `git commit -m "feat: adiciona cartão do Seu Nome"` → `git push`
+5. No GitHub, abra um **Pull Request** para `Neto-User/aula-git`. Quando for aceito, seu cartão aparece no mural!
