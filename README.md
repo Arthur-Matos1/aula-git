@@ -14,12 +14,69 @@ git config --global user.name "Seu Nome"
 git config --global user.email "seu@email.com"
 ```
 
-## 2. Criar a chave SSH
+Como configurar SSH no GitHub pelo Git Bash
 
-```bash
-ssh-keygen -t ed25519 -C "seu@email.com"   # aperte Enter 3 vezes
-cat ~/.ssh/id_ed25519.pub                   # copie o texto que aparecer
-```
+Objetivo: Configurar uma chave SSH para conectar seu computador ao GitHub e clonar repositórios sem precisar digitar usuário e senha toda vez.
+
+1. Gerar uma chave SSH
+
+Abra o Git Bash e execute:
+
+ssh-keygen -t ed25519 -C "seu-email@example.com"
+
+Pressione Enter para aceitar o local padrão.
+
+Se quiser, defina uma senha para a chave.
+
+Pressione Enter novamente para confirmar.
+
+2. Iniciar o agente SSH
+
+Execute os comandos:
+
+eval "$(ssh-agent -s)"
+
+Depois:
+
+ssh-add ~/.ssh/id_ed25519
+
+3. Copiar a chave pública
+
+Execute:
+
+clip < ~/.ssh/id_ed25519.pub
+
+Isso copia sua chave pública automaticamente.
+
+4. Adicionar a chave ao GitHub
+
+Acesse o GitHub.
+
+Clique na sua foto de perfil.
+
+Entre em Settings.
+
+Acesse SSH and GPG keys.
+
+Clique em New SSH key.
+
+Dê um nome para a chave.
+
+Cole a chave copiada.
+
+Clique em Add SSH key.
+
+5. Testar a conexão
+
+No Git Bash, execute:
+
+ssh -T git@github.com
+
+Se aparecer uma pergunta sobre a autenticidade da conexão, digite:
+
+yes
+
+Se tudo estiver correto, aparecerá uma mensagem informando que a autenticação foi realizada com sucesso.
 
 No GitHub: **Settings → SSH and GPG keys → New SSH key** → cole → Add SSH key.
 
